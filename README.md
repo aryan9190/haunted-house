@@ -8,6 +8,7 @@
 ## 🕸️ **How to Survive... I Mean Use** 🕸️
 
 - **Open the Website**: Use your browser to enter the haunted house.
+- https://aryan9190.github.io/haunted-house/
 - **Turn Up the Volume**: The music sets the mood. But beware... not all sounds are what they seem.
 - **Don’t Panic**: Ghosts may follow your mouse, but it’s only a matter of time before they catch you.
 - **Find the Hidden Secrets**: There’s more in the shadows than meets the eye.
