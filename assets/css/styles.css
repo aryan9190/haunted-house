@@ -1,0 +1,248 @@
+/* 🌑👻 Dark and Spooky Stylesheet 👻🌑 */
+
+/* Import Creepster Font */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    background: url('../images/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Creepster', cursive;
+    color: #fff;
+    overflow: hidden; /* Trapped in the manor */
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Hidden class to toggle visibility */
+.hidden {
+    display: none;
+}
+
+/* Start Screen Styles */
+.start-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1000;
+}
+
+.start-screen h1 {
+    font-size: 4rem;
+    text-shadow: 2px 2px 10px #ff0000;
+    margin-bottom: 20px;
+}
+
+.start-screen p {
+    font-size: 1.5rem;
+}
+
+.key {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.navbar li {
+    margin: 0 15px;
+}
+
+.navbar a {
+    color: #ff6666;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #ff0000;
+}
+
+/* Main Header */
+.main-header {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.main-header h1 {
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 10px #ff0000;
+    margin-bottom: 20px;
+}
+
+.main-header p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.spooky-link {
+    color: #ff3333;
+    font-size: 1.8rem;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 2px solid #ff3333;
+    border-radius: 5px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.spooky-link:hover {
+    background: #ff3333;
+    color: #000;
+    box-shadow: 0 0 20px #ff3333;
+}
+
+/* Ghost Styles */
+.ghost {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;
+    animation: float 6s ease-in-out infinite;
+    cursor: pointer;
+    z-index: 500;
+}
+
+.ghost1 {
+    top: 30%;
+    left: 10%;
+    animation-duration: 5s;
+}
+
+.ghost2 {
+    top: 60%;
+    left: 80%;
+    animation-duration: 7s;
+}
+
+.ghost3 {
+    top: 40%;
+    left: 50%;
+    animation-duration: 6s;
+}
+
+/* Ghost Images */
+.ghost1 {
+    background: url('../images/ghost1.png') no-repeat center center;
+    background-size: contain;
+}
+
+.ghost2 {
+    background: url('../images/ghost2.png') no-repeat center center;
+    background-size: contain;
+}
+
+.ghost3 {
+    background: url('../images/ghost3.png') no-repeat center center;
+    background-size: contain;
+}
+
+/* Ghost Hover Effect */
+.ghost:hover {
+    transform: scale(1.2);
+    animation: scare 0.5s forwards;
+}
+
+/* Keyframes for Floating Ghosts */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+/* Scare Animation */
+@keyframes scare {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.5) rotate(20deg); }
+    100% { transform: scale(1) rotate(-20deg); }
+}
+
+/* Fog Overlay */
+.fog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../images/fog.png') repeat;
+    opacity: 0.5;
+    z-index: 500;
+    pointer-events: none;
+    animation: moveFog 30s linear infinite;
+}
+
+/* Keyframes for Moving Fog */
+@keyframes moveFog {
+    from { background-position: 0 0; }
+    to { background-position: -1000px 0; }
+}
+
+/* Footer Styles */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    z-index: 1000;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-header p {
+        font-size: 1.2rem;
+    }
+
+    .spooky-link {
+        font-size: 1.5rem;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar li {
+        margin: 10px 0;
+    }
+
+    .ghost {
+        width: 70px;
+        height: 70px;
+    }
+}
