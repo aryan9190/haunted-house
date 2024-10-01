@@ -3,120 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Haunted House</title>
-
-    <!-- Spooky CSS for Haunted House Theme -->
-    <style>
-        body {
-            background-color: #000; /* Dark spooky background */
-            color: #fff; /* White eerie text */
-            font-family: 'Creepster', cursive; /* You can use Google Fonts like Creepster */
-            overflow: hidden; /* No scrollbars, you’re trapped */
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            margin: 0;
-        }
-
-        h1 {
-            font-size: 4rem;
-            text-shadow: 3px 3px 5px red; /* Haunting red glow */
-        }
-
-        .spooky-link {
-            color: #ff0000; /* Bloody red link */
-            font-size: 2rem;
-            text-decoration: none;
-        }
-
-        .spooky-link:hover {
-            color: #ff5500;
-            text-shadow: 2px 2px 5px yellow; /* Eerie glow on hover */
-        }
-
-        /* Ghosts */
-        .ghost {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100px;
-            height: 100px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .ghost::before, .ghost::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 50%;
-        }
-
-        .ghost::before {
-            top: -50px;
-            left: 25px;
-        }
-
-        .ghost::after {
-            bottom: -50px;
-            left: 25px;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translate(-50%, -50%) translateY(-10px); }
-            50% { transform: translate(-50%, -50%) translateY(10px); }
-        }
-
-        /* Spooky fog */
-        .fog {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://www.transparenttextures.com/patterns/dark-fog.png');
-            z-index: 2;
-            pointer-events: none;
-        }
-
-    </style>
+    <title>Haunted Manor - Enter If You Dare</title>
+    <!-- Spooky Fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-    <!-- Creepy sound that plays when the page loads -->
-    <audio autoplay loop>
-        <source src="https://example.com/spooky-sound.mp3" type="audio/mpeg">
-    </audio>
+    <!-- Ambient Spooky Music -->
+    <audio id="ambient-audio" src="assets/audio/ambient.mp3" autoplay loop></audio>
 
-    <!-- Spooky Haunted House Title -->
-    <h1>Enter... If You Dare</h1>
+    <!-- Start Screen -->
+    <div id="start-screen" class="start-screen">
+        <h1>Welcome to the Haunted Manor</h1>
+        <p>Press <span class="key">Enter</span> to Begin Your Journey...</p>
+    </div>
 
-    <!-- The haunted anchor tag to Boba Manor -->
-    <a class="spooky-link" href="https://hack.club/boba-manor" target="_blank">Visit the Haunted Boba Manor...</a>
+    <!-- Main Game Content -->
+    <div id="game-content" class="game-content hidden">
+        <!-- Haunted Title -->
+        <header class="main-header">
+            <h1>Haunted Manor Awaits</h1>
+            <p>Dare to explore the mysteries within...</p>
+            <a class="spooky-link" href="https://hack.club/boba-manor" target="_blank">Visit the Haunted Boba Manor...</a>
+        </header>
 
-    <!-- Ghosts that hover around, waiting to scare you -->
-    <div class="ghost" style="top: 20%; left: 70%;"></div>
-    <div class="ghost" style="top: 70%; left: 30%;"></div>
+        <!-- Interactive Ghosts -->
+        <img src="assets/images/ghost1.png" alt="Ghost 1" class="ghost ghost1">
+        <img src="assets/images/ghost2.png" alt="Ghost 2" class="ghost ghost2">
+        <img src="assets/images/ghost3.png" alt="Ghost 3" class="ghost ghost3">
 
-    <!-- Eerie Fog for that extra spooky touch -->
-    <div class="fog"></div>
+        <!-- Fog Overlay -->
+        <div class="fog"></div>
 
-    <!-- Spooky JavaScript -->
-    <script>
-        // Spooky JS to control ghost movement or sound
-        
-        // Ghost that chases the user's mouse... Beware!
-        document.body.addEventListener('mousemove', function(e) {
-            const ghost = document.querySelector('.ghost');
-            const x = e.clientX;
-            const y = e.clientY;
-            ghost.style.transform = `translate(${x}px, ${y}px)`;
-        });
-    </script>
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with ❤️ by Aryan</p>
+        </footer>
+    </div>
+
+    <!-- Scare Sound Effect -->
+    <audio id="scare-audio" src="assets/audio/scare.mp3"></audio>
+
+    <!-- JavaScript -->
+    <script src="assets/js/scripts.js"></script>
 </body>
 </html>
