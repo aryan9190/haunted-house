@@ -11,9 +11,9 @@ body {
     background-size: cover;
     font-family: 'Creepster', cursive;
     color: #fff;
-    overflow: hidden; /* Trapped in the manor */
+    overflow-x: hidden; /* Prevent horizontal scroll */
     position: relative;
-    height: 100vh;
+    height: 200vh; /* Increased height to allow scrolling */
     width: 100%;
 }
 
@@ -24,18 +24,24 @@ body {
 
 /* Start Screen Styles */
 .start-screen {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     z-index: 1000;
+    transition: opacity 1s ease, visibility 1s ease;
+}
+
+.start-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .start-screen h1 {
@@ -55,46 +61,47 @@ body {
     font-family: monospace;
 }
 
-/* Navigation Bar */
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    padding: 10px 0;
-    z-index: 1000;
-}
-
-.navbar ul {
-    list-style: none;
+/* Scroll Indicator Styles */
+.scroll-indicator {
+    margin-top: 40px;
     display: flex;
-    justify-content: center;
-    margin: 0;
+    flex-direction: column;
+    align-items: center;
 }
 
-.navbar li {
-    margin: 0 15px;
+.scroll-indicator span {
+    display: block;
+    width: 10px;
+    height: 10px;
+    margin: 5px 0;
+    border-radius: 50%;
+    background: #ff6666;
+    animation: bounce 2s infinite;
 }
 
-.navbar a {
-    color: #ff6666;
-    text-decoration: none;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
+.scroll-indicator span:nth-child(2) {
+    animation-delay: 0.2s;
 }
 
-.navbar a:hover {
-    color: #ff0000;
+.scroll-indicator span:nth-child(3) {
+    animation-delay: 0.4s;
 }
 
-/* Main Header */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(10px); }
+    60% { transform: translateY(5px); }
+}
+
+/* Main Game Content */
+.game-content {
+    position: relative;
+    padding-top: 100vh; /* Start after the start screen */
+}
+
 .main-header {
-    position: absolute;
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
-    z-index: 1;
+    margin-bottom: 50px;
 }
 
 .main-header h1 {
@@ -139,32 +146,22 @@ body {
     top: 30%;
     left: 10%;
     animation-duration: 5s;
+    background: url('../images/ghost1.png') no-repeat center center;
+    background-size: contain;
 }
 
 .ghost2 {
     top: 60%;
     left: 80%;
     animation-duration: 7s;
+    background: url('../images/ghost2.png') no-repeat center center;
+    background-size: contain;
 }
 
 .ghost3 {
     top: 40%;
     left: 50%;
     animation-duration: 6s;
-}
-
-/* Ghost Images */
-.ghost1 {
-    background: url('../images/ghost1.png') no-repeat center center;
-    background-size: contain;
-}
-
-.ghost2 {
-    background: url('../images/ghost2.png') no-repeat center center;
-    background-size: contain;
-}
-
-.ghost3 {
     background: url('../images/ghost3.png') no-repeat center center;
     background-size: contain;
 }
@@ -197,7 +194,7 @@ body {
     height: 100%;
     background: url('../images/fog.png') repeat;
     opacity: 0.5;
-    z-index: 500;
+    z-index: 400;
     pointer-events: none;
     animation: moveFog 30s linear infinite;
 }
@@ -217,15 +214,34 @@ body {
     color: #fff;
     z-index: 1000;
     font-size: 1rem;
+    text-shadow: 1px 1px 5px #000;
+}
+
+/* Flash Effect for Scares */
+.flash {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 1;
+    z-index: 2000;
+    animation: flashEffect 0.5s forwards;
+}
+
+@keyframes flashEffect {
+    from { opacity: 1; }
+    to { opacity: 0; }
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .main-header h1 {
+    .start-screen h1 {
         font-size: 2.5rem;
     }
 
-    .main-header p {
+    .start-screen p {
         font-size: 1.2rem;
     }
 
@@ -233,16 +249,26 @@ body {
         font-size: 1.5rem;
     }
 
-    .navbar ul {
-        flex-direction: column;
-    }
-
-    .navbar li {
-        margin: 10px 0;
+    .scroll-indicator span {
+        width: 8px;
+        height: 8px;
     }
 
     .ghost {
         width: 70px;
         height: 70px;
     }
+
+    .main-header h1 {
+        font-size: 2.5rem;
+    }
+
+    .main-header p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
 }
