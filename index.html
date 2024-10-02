@@ -14,13 +14,18 @@
     <audio id="ambient-audio" src="assets/audio/ambient.mp3" autoplay loop></audio>
 
     <!-- Start Screen -->
-    <div id="start-screen" class="start-screen">
+    <section id="start-screen" class="start-screen">
         <h1>Welcome to the Haunted Manor</h1>
-        <p>Press <span class="key">Enter</span> to Begin Your Journey...</p>
-    </div>
+        <p>Swipe Up or Scroll Down to Begin Your Journey...</p>
+        <div class="scroll-indicator">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </section>
 
     <!-- Main Game Content -->
-    <div id="game-content" class="game-content hidden">
+    <section id="game-content" class="game-content hidden">
         <!-- Haunted Title -->
         <header class="main-header">
             <h1>Haunted Manor Awaits</h1>
@@ -40,7 +45,13 @@
         <footer class="footer">
             <p>Made with ❤️ by Aryan</p>
         </footer>
-    </div>
+
+        <!-- Mute Button -->
+        <button id="mute-button" class="mute-button">🔊</button>
+
+        <!-- Accessibility Button -->
+        <button id="accessibility-button" class="accessibility-button">♿</button>
+    </section>
 
     <!-- Scare Sound Effect -->
     <audio id="scare-audio" src="assets/audio/scare.mp3"></audio>
